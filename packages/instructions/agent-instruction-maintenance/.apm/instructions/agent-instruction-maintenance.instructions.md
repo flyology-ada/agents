@@ -15,8 +15,11 @@ description: Maintain reusable agent resources as reproducible APM packages.
   `compatibility`, `metadata`, and `allowed-tools`.
 - Do not maintain separate skill source copies for Codex and Claude. Let APM
   deploy the same package to each selected target.
-- Pin consumer targets in `apm.yml`, commit `apm.lock.yaml`, and use
-  `apm install --frozen` for reproducible installation.
+- Declare the intended consumer update channel in `apm.yml`, commit
+  `apm.lock.yaml` as the exact revision and content pin, and use
+  `apm install --frozen` for reproducible installation. Advance shared
+  packages only with an explicit `apm update` and review the lockfile and
+  generated output.
 - Run `apm install` to deploy Claude rules and both clients' skill trees. Run
   `apm compile --target codex` to regenerate Codex `AGENTS.md` files without
   removing the installed Claude rules.

@@ -27,7 +27,9 @@ apm --version
 See APM's [installation guide](https://microsoft.github.io/apm/getting-started/installation/)
 for package-manager, pip, mirror, and manual installation alternatives.
 
-Declare the required profile at an exact tag or commit:
+Declare the required profile on the shared repository's explicit update
+channel. The committed lockfile, not the manifest branch name, pins the exact
+revision used by a consumer:
 
 ```yaml
 name: flyology-http-agent-context
@@ -38,7 +40,7 @@ dependencies:
     - path: ./agent-packages/repository
     - git: https://github.com/flyology-ada/agents.git
       path: packages/profiles/ada-library
-      ref: <tag-or-commit>
+      ref: main
 ```
 
 Resolve once and commit the resulting lockfile:
@@ -48,6 +50,21 @@ apm install
 apm compile --target codex
 git add apm.yml apm.lock.yaml AGENTS.md agent-packages
 ```
+
+Normal and frozen installs replay the exact commits and content hashes in
+`apm.lock.yaml`; they do not follow `main` implicitly. Review an upstream
+update explicitly, regenerate Codex output, and commit the resulting lock and
+generated-file changes together:
+
+```sh
+apm outdated
+apm update flyology-ada/agents
+apm compile --target codex
+apm audit --ci
+```
+
+Consumers that require release ranges may use an annotated semver tag or range
+instead of `main`, while retaining the same lockfile review workflow.
 
 After cloning or creating a worktree, provision the locked resources before
 starting either client:
@@ -79,8 +96,9 @@ clients' skill trees; the Codex-only compile generates the committed
 - `packages/profiles/agents-repository` composes the rules for this repository.
 
 Profiles use APM's `git: parent` dependencies so every module resolves from the
-same repository commit. Direct subpackage installs and exact Git refs keep
-publishing distributed; a registry is not required.
+same repository commit. Direct subpackage installs, explicit update channels,
+and committed lockfiles keep publishing distributed and reproducible; a
+registry is not required.
 
 ## Development
 
