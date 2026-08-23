@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-08-23T17:46:39.875761+00:00'
+generated_at: '2026-08-23T18:58:18.524431+00:00'
 apm_version: 0.28.0
 dependencies:
 - repo_url: _local/agent-instruction-maintenance
@@ -88,6 +88,10 @@ dependencies:
   - .agents/skills/alire/references/raspberry-pi-pico.md
   - .agents/skills/alire/references/testing.md
   - .agents/skills/alire/references/zephyr.md
+  - .agents/skills/flyology-crate-spinout
+  - .agents/skills/flyology-crate-spinout/SKILL.md
+  - .agents/skills/flyology-crate-spinout/references/repository-decision.md
+  - .agents/skills/flyology-crate-spinout/references/spinout-execution.md
   - .agents/skills/flyology-website-content
   - .agents/skills/flyology-website-content/SKILL.md
   - .agents/skills/gnatdoc
@@ -168,6 +172,10 @@ dependencies:
   - .claude/skills/alire/references/raspberry-pi-pico.md
   - .claude/skills/alire/references/testing.md
   - .claude/skills/alire/references/zephyr.md
+  - .claude/skills/flyology-crate-spinout
+  - .claude/skills/flyology-crate-spinout/SKILL.md
+  - .claude/skills/flyology-crate-spinout/references/repository-decision.md
+  - .claude/skills/flyology-crate-spinout/references/spinout-execution.md
   - .claude/skills/flyology-website-content
   - .claude/skills/flyology-website-content/SKILL.md
   - .claude/skills/gnatdoc
@@ -241,6 +249,9 @@ dependencies:
     .agents/skills/alire/references/raspberry-pi-pico.md: sha256:f47c5514b09e591581a1cfea7c517c074e707d94d9e9e799e106a0a77722dab9
     .agents/skills/alire/references/testing.md: sha256:da30b1e2fbd15823dd206c1d77f47bb3780b8753593bc6c0e954b772c43a51b8
     .agents/skills/alire/references/zephyr.md: sha256:c9017496759fe5e5a672c0a79dc0dbb18393ba94728f8606482382ea90dba75e
+    .agents/skills/flyology-crate-spinout/SKILL.md: sha256:c703a30046dc69934e6592bb8875fed8e2ebe74ddd7d0f4cd5de84ba0d6ce938
+    .agents/skills/flyology-crate-spinout/references/repository-decision.md: sha256:36b54c6fc01a9ab4535d2d3376a8bc969183d18c71d99e7174ec49e9641f3329
+    .agents/skills/flyology-crate-spinout/references/spinout-execution.md: sha256:814fb2c05571651d40e3e7c82310d42709ac0c362cebe9216c699e550537400e
     .agents/skills/flyology-website-content/SKILL.md: sha256:d06ab4b5b5128de1af10e5adaaed72134100641750caf19562672feb4a2ee921
     .agents/skills/gnatdoc/SKILL.md: sha256:225bd5f25e320beceaeda14157e78dfb589eca6ae09e45449742347d2b53bd7a
     .agents/skills/gnatdoc/references/annotations.md: sha256:a65e5086a7b07a4f40567c96200d461a605f0b3a684708e84f27262b69a39b85
@@ -308,6 +319,9 @@ dependencies:
     .claude/skills/alire/references/raspberry-pi-pico.md: sha256:f47c5514b09e591581a1cfea7c517c074e707d94d9e9e799e106a0a77722dab9
     .claude/skills/alire/references/testing.md: sha256:da30b1e2fbd15823dd206c1d77f47bb3780b8753593bc6c0e954b772c43a51b8
     .claude/skills/alire/references/zephyr.md: sha256:c9017496759fe5e5a672c0a79dc0dbb18393ba94728f8606482382ea90dba75e
+    .claude/skills/flyology-crate-spinout/SKILL.md: sha256:c703a30046dc69934e6592bb8875fed8e2ebe74ddd7d0f4cd5de84ba0d6ce938
+    .claude/skills/flyology-crate-spinout/references/repository-decision.md: sha256:36b54c6fc01a9ab4535d2d3376a8bc969183d18c71d99e7174ec49e9641f3329
+    .claude/skills/flyology-crate-spinout/references/spinout-execution.md: sha256:814fb2c05571651d40e3e7c82310d42709ac0c362cebe9216c699e550537400e
     .claude/skills/flyology-website-content/SKILL.md: sha256:d06ab4b5b5128de1af10e5adaaed72134100641750caf19562672feb4a2ee921
     .claude/skills/gnatdoc/SKILL.md: sha256:225bd5f25e320beceaeda14157e78dfb589eca6ae09e45449742347d2b53bd7a
     .claude/skills/gnatdoc/references/annotations.md: sha256:a65e5086a7b07a4f40567c96200d461a605f0b3a684708e84f27262b69a39b85
@@ -679,6 +693,42 @@ deployments:
   - ./packages/skills
   active_owner: ./packages/skills
   content_hash: sha256:c9017496759fe5e5a672c0a79dc0dbb18393ba94728f8606482382ea90dba75e
+- kind: project-relative
+  target: claude
+  value: .claude/skills/flyology-crate-spinout
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/flyology-crate-spinout/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:c703a30046dc69934e6592bb8875fed8e2ebe74ddd7d0f4cd5de84ba0d6ce938
+- kind: project-relative
+  target: claude
+  value: .claude/skills/flyology-crate-spinout/references/repository-decision.md
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:36b54c6fc01a9ab4535d2d3376a8bc969183d18c71d99e7174ec49e9641f3329
+- kind: project-relative
+  target: claude
+  value: .claude/skills/flyology-crate-spinout/references/spinout-execution.md
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:814fb2c05571651d40e3e7c82310d42709ac0c362cebe9216c699e550537400e
 - kind: project-relative
   target: claude
   value: .claude/skills/flyology-website-content
@@ -1399,6 +1449,42 @@ deployments:
   - ./packages/skills
   active_owner: ./packages/skills
   content_hash: sha256:c9017496759fe5e5a672c0a79dc0dbb18393ba94728f8606482382ea90dba75e
+- kind: project-relative
+  target: codex
+  value: .agents/skills/flyology-crate-spinout
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/flyology-crate-spinout/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:c703a30046dc69934e6592bb8875fed8e2ebe74ddd7d0f4cd5de84ba0d6ce938
+- kind: project-relative
+  target: codex
+  value: .agents/skills/flyology-crate-spinout/references/repository-decision.md
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:36b54c6fc01a9ab4535d2d3376a8bc969183d18c71d99e7174ec49e9641f3329
+- kind: project-relative
+  target: codex
+  value: .agents/skills/flyology-crate-spinout/references/spinout-execution.md
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:814fb2c05571651d40e3e7c82310d42709ac0c362cebe9216c699e550537400e
 - kind: project-relative
   target: codex
   value: .agents/skills/flyology-website-content
