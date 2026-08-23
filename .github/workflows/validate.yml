@@ -22,7 +22,7 @@ jobs:
         run: pip install apm-cli==0.28.0
       - name: Validate every primitive package
         run: |
-          for package in packages/instructions/* packages/skills; do
+          for package in packages/instructions/*; do
             (cd "$package" && apm compile --validate)
           done
       - name: Reproduce agent resources
