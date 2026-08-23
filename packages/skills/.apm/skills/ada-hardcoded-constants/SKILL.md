@@ -1,9 +1,9 @@
 ---
 name: ada-hardcoded-constants
-description: Audit Ada specifications and bodies for constants, defaults, bounds, and literals that encode unapproved policy. Use when reviewing `.ads` or `.adb` values, questioning hard-coded choices, or deciding how a value should be represented. Report decisions and alternatives before editing; do not mechanically replace literals.
+description: Audit Ada specifications and bodies for constants, defaults, bounds, and literals that encode unapproved policy, and document the authority for consequential values in source. Use when reviewing `.ads` or `.adb` values, questioning hard-coded choices, deciding how a value should be represented, or recording why an approved or externally established value exists. Report decisions and alternatives before editing; do not mechanically replace literals.
 license: Apache-2.0
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # Audit Ada values
@@ -65,3 +65,48 @@ Separate findings that need decisions from harmless literals and externally
 fixed values. Do not edit consequential values until the user resolves the
 open decisions. After approval, implement only the selected representation and
 run focused tests for the affected contract.
+
+## Preserve the decision in source
+
+After a consequential value or representation is approved, or retained
+because an external or derived contract already establishes it, record the
+choice and its authority in a concise source comment adjacent to the
+declaration, representation clause, validation, or tightly related group of
+values. A decision table or conversation record does not replace this durable
+source documentation.
+
+The comment should identify, as relevant:
+
+- what contract or policy the value controls;
+- why that value or shape was selected and which stable authority supports it;
+- whether it is an external protocol or ABI mandate, persisted-format choice,
+  derived arithmetic consequence, project policy, or test/reference capacity;
+- the compatibility consequence of changing it.
+
+Keep the comment beside the declaration it documents: visible and private-part
+declarations stay documented in the `.ads` file, while body-only values stay
+documented in the `.adb` file. One nearby comment may cover a coherent group;
+do not add repetitive comments to harmless literals. For a derived value,
+document the governing formula or source fields rather than presenting the
+result as an independent policy choice. For a generated declaration, change
+the generator to emit the authority comment rather than hand-editing generated
+output.
+
+Prefer a stable specification, format version, issue, ADR, or maintained
+project rule over an ephemeral conversation reference. When explicit user
+direction is the only authority, describe the durable project policy that was
+authorized instead of naming the conversation or person. Update or remove the
+comment whenever the choice or its authority changes.
+
+For example:
+
+```ada
+--  Persisted-format v1 contract: the object-kind declarations above assign
+--  1 .. 3 to HEAD, batch, and manifest. Kind 4 is therefore the next unused
+--  value; changing it is wire-incompatible.
+SST_Object_Kind : constant := 4;
+
+--  Reference-codec contract: capacity is exactly the maintained frozen vector
+--  set's length; it is not an operational ceiling.
+Reference_Capacity : constant := Reference_Vectors'Length;
+```
