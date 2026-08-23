@@ -11,6 +11,7 @@ dependencies:
   apm:
     - path: ./packages/instructions/repository-workflow
     - path: ./packages/instructions/decision-authority
+    - path: ./packages/instructions/review-cycle
     - path: ./packages/instructions/agent-instruction-maintenance
     - path: ./packages/instructions/problem-solution-commits
     - path: ./packages/skills
