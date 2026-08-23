@@ -35,6 +35,7 @@ version: 0.1.0
 targets: [codex, claude]
 dependencies:
   apm:
+    - path: ./agent-packages/repository
     - git: https://github.com/flyology-ada/agents.git
       path: packages/profiles/ada-library
       ref: <tag-or-commit>
@@ -44,8 +45,8 @@ Resolve once and commit the resulting lockfile:
 
 ```sh
 apm install
-apm compile
-git add apm.yml apm.lock.yaml AGENTS.md .apm
+apm compile --target codex
+git add apm.yml apm.lock.yaml AGENTS.md agent-packages
 ```
 
 After cloning or creating a worktree, provision the locked resources before
@@ -53,11 +54,18 @@ starting either client:
 
 ```sh
 apm install --frozen
-apm compile
+apm compile --target codex
 ```
 
 Start a fresh Codex or Claude session after installation so its skill catalog
 includes the deployed packages.
+
+Keep repository-specific instructions in local packages under
+`agent-packages/` and list those packages as local `path` dependencies. Put
+only instructions and skills that retain the same meaning across repositories
+in `flyology-ada/agents`. `apm install` deploys Claude's native rules and both
+clients' skill trees; the Codex-only compile generates the committed
+`AGENTS.md` without removing Claude's deployed rules.
 
 ## Packages
 
@@ -83,7 +91,7 @@ root:
 ```sh
 apm install
 apm compile --validate
-apm compile --target codex,claude --clean
+apm compile --target codex
 apm audit --ci
 ```
 
@@ -91,8 +99,9 @@ The root manifest is also a consumer of the agents-repository profile's
 components. Its compilation excludes package source directories so only the
 declared dependency closure enters the generated root context.
 
-Commit `apm.lock.yaml` and generated `AGENTS.md` files. Claude consumes the
-generated `.claude/rules/` tree; both clients consume generated skill trees.
+Commit `apm.lock.yaml`, local `agent-packages/`, and generated `AGENTS.md`
+files. Claude consumes the installed `.claude/rules/` tree; both clients
+consume installed skill trees.
 Do not commit `apm_modules/` or deployed client skill/rule trees: reproduce
 them with the frozen install when creating a clone or worktree.
 

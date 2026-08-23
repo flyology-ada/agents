@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-08-23T13:43:24.463814+00:00'
+generated_at: '2026-08-23T14:05:50.947890+00:00'
 apm_version: 0.28.0
 dependencies:
 - repo_url: _local/agent-instruction-maintenance
@@ -9,7 +9,7 @@ dependencies:
   deployed_files:
   - .claude/rules/agent-instruction-maintenance.md
   deployed_file_hashes:
-    .claude/rules/agent-instruction-maintenance.md: sha256:57f46fa4a8be2cb02c500456357c00fb6a949cf27127bf5b7ed65b94d89480e3
+    .claude/rules/agent-instruction-maintenance.md: sha256:3c8e1401d6f0d9b5ec8b2f4860b2e4a1bb3cb06ef790492fcb3d895d6b25cd0b
   source: local
   local_path: ./packages/instructions/agent-instruction-maintenance
 - repo_url: _local/decision-authority
@@ -39,7 +39,7 @@ dependencies:
   deployed_files:
   - .claude/rules/repository-workflow.md
   deployed_file_hashes:
-    .claude/rules/repository-workflow.md: sha256:77718869854bfd4ae5556cd0db5c6ad45f34bf2eb4d30a8131642b56a75728e4
+    .claude/rules/repository-workflow.md: sha256:69bffd5b645f5e5eddb719c54afe6c573a8481228f4bef2096ed8c6c55c98e85
   source: local
   local_path: ./packages/instructions/repository-workflow
 - repo_url: _local/skills
@@ -274,7 +274,7 @@ dependencies:
     .agents/skills/gnattest/references/tagged-types-and-inheritance.md: sha256:6a0f49d78c374d8771c6f373422ee12304f979577fcbaffcd13042d88c4df0d0
     .agents/skills/gnattest/references/test-skeletons.md: sha256:baaaf48c32a9dbdd712db7c41848822aa78cf4aa42e807dd04596b4f546342ec
     .agents/skills/gnattest/references/workflow.md: sha256:fe94afe889db7c6476838b4d688962d4c2742c16d6877e813b7eea0817ca6554
-    .agents/skills/maintain-agent-instructions/SKILL.md: sha256:e5156174fba557799cbc4db0dfff51b0aff0b3e8f5a1fd12286c98a56a30aad8
+    .agents/skills/maintain-agent-instructions/SKILL.md: sha256:0d1404597576cc9d9abb37cf108cfed812adb872c51825abe91985e5172b8e11
     .claude/skills/ada-api-contract-review/SKILL.md: sha256:ee95c75b0cd67f94ffc0644e48f4a904c3c5f801ccd9a4346b14366b8921994d
     .claude/skills/ada-concurrency-ownership-review/SKILL.md: sha256:f10c924e5fd3975b7aadaec91b7e736ff6ad562151ade8c828f84038e7747d6f
     .claude/skills/ada-generated-source-review/SKILL.md: sha256:d0b609df71c5dd9540952107ffb6ac99d5b3fb1532a3b795d11f771ac2198ff9
@@ -341,7 +341,7 @@ dependencies:
     .claude/skills/gnattest/references/tagged-types-and-inheritance.md: sha256:6a0f49d78c374d8771c6f373422ee12304f979577fcbaffcd13042d88c4df0d0
     .claude/skills/gnattest/references/test-skeletons.md: sha256:baaaf48c32a9dbdd712db7c41848822aa78cf4aa42e807dd04596b4f546342ec
     .claude/skills/gnattest/references/workflow.md: sha256:fe94afe889db7c6476838b4d688962d4c2742c16d6877e813b7eea0817ca6554
-    .claude/skills/maintain-agent-instructions/SKILL.md: sha256:e5156174fba557799cbc4db0dfff51b0aff0b3e8f5a1fd12286c98a56a30aad8
+    .claude/skills/maintain-agent-instructions/SKILL.md: sha256:0d1404597576cc9d9abb37cf108cfed812adb872c51825abe91985e5172b8e11
   source: local
   local_path: ./packages/skills
 deployments:
@@ -353,7 +353,7 @@ deployments:
   owners:
   - ./packages/instructions/agent-instruction-maintenance
   active_owner: ./packages/instructions/agent-instruction-maintenance
-  content_hash: sha256:57f46fa4a8be2cb02c500456357c00fb6a949cf27127bf5b7ed65b94d89480e3
+  content_hash: sha256:3c8e1401d6f0d9b5ec8b2f4860b2e4a1bb3cb06ef790492fcb3d895d6b25cd0b
 - kind: project-relative
   target: claude
   value: .claude/rules/decision-authority.md
@@ -380,7 +380,7 @@ deployments:
   owners:
   - ./packages/instructions/repository-workflow
   active_owner: ./packages/instructions/repository-workflow
-  content_hash: sha256:77718869854bfd4ae5556cd0db5c6ad45f34bf2eb4d30a8131642b56a75728e4
+  content_hash: sha256:69bffd5b645f5e5eddb719c54afe6c573a8481228f4bef2096ed8c6c55c98e85
 - kind: project-relative
   target: claude
   value: .claude/skills/ada-api-contract-review
@@ -1100,7 +1100,7 @@ deployments:
   owners:
   - ./packages/skills
   active_owner: ./packages/skills
-  content_hash: sha256:e5156174fba557799cbc4db0dfff51b0aff0b3e8f5a1fd12286c98a56a30aad8
+  content_hash: sha256:0d1404597576cc9d9abb37cf108cfed812adb872c51825abe91985e5172b8e11
 - kind: project-relative
   target: codex
   value: .agents/skills/ada-api-contract-review
@@ -1820,4 +1820,4 @@ deployments:
   owners:
   - ./packages/skills
   active_owner: ./packages/skills
-  content_hash: sha256:e5156174fba557799cbc4db0dfff51b0aff0b3e8f5a1fd12286c98a56a30aad8
+  content_hash: sha256:0d1404597576cc9d9abb37cf108cfed812adb872c51825abe91985e5172b8e11

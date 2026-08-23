@@ -11,9 +11,16 @@ description: Preserve repository state and use evidence-driven implementation wo
   `apm --version`. Use the repository README and APM's installation guide for
   Windows or alternative installation methods.
 - After cloning or creating a worktree with `apm.lock.yaml`, run
-  `apm install --frozen` and `apm compile --target codex,claude --clean` before
-  starting either client. Use a non-frozen install only when intentionally
-  updating the lockfile.
+  `apm install --frozen` and `apm compile --target codex` before
+  starting either client. The install deploys Claude's native rules and both
+  clients' skills; the compile generates Codex's `AGENTS.md` without removing
+  the Claude rules. Use a non-frozen install only when intentionally updating
+  the lockfile.
+- Keep rules that are truly specific to this repository in local APM packages
+  under `agent-packages/`, with one package per independently selected scope.
+  List them as local `path` dependencies in the root `apm.yml`. Depend on
+  `flyology-ada/agents` only for rules and skills whose meaning is shared
+  across repositories.
 - Run `git status --short --branch` before changing anything.
 - Preserve unrelated user changes. Do not rewrite, discard, or reformat them.
 - Read the relevant implementation and maintained scripts before relying on

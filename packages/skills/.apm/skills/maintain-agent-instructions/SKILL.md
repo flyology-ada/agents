@@ -1,29 +1,33 @@
 ---
 name: maintain-agent-instructions
-description: Create, extract, compose, render, validate, or migrate shared AGENTS.md and CLAUDE.md instructions and repository skills. Use for flyology-ada/agents changes, consumer submodule adoption, @ import profiles, or cross-agent discovery testing.
+description: Create, extract, package, compile, validate, or migrate shared and repository-specific agent instructions and skills with APM. Use for flyology-ada/agents changes, consumer package adoption, local instruction packages, or cross-agent discovery testing.
 license: Apache-2.0
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # Maintain shared agent resources
 
 Separate always-on constraints from specialized workflows. Keep reusable rules
-in focused instruction modules, project composition in `@` manifests, and
+in focused instruction packages, project composition in `apm.yml`, and
 task-specific procedures in skills.
 
-Use one canonical skill directory. Expose selected skills through
-`.agents/skills/` for Codex and link `.claude/skills` to that selection for
-Claude Code. Keep shared skill frontmatter portable across both clients.
+Keep truly repository-specific instructions in local packages under
+`agent-packages/`, one package for each independently selected scope. Keep only
+rules and skills with the same meaning across repositories in the shared
+`flyology-ada/agents` repository. Reference local packages with APM `path`
+dependencies and shared packages with exact Git commits or immutable tags.
 
-Render `AGENTS.md` from `AGENTS.sources.md` because Codex does not expand
-`@path` imports. Let Claude load the same source manifest through `CLAUDE.md`.
-Do not hand-edit the generated file.
+Use APM's native deployment layouts for both clients. Run `apm install` to
+deploy Claude rules and both skill trees, then run
+`apm compile --target codex` to render the committed Codex `AGENTS.md` without
+deleting Claude's rules. Do not hand-edit generated files.
 
 Before a consumer pull request:
 
-- initialize the pinned agents submodule;
-- validate imports, skill links, and generated output;
+- install the pinned package graph with `apm install --frozen`;
+- validate local packages, shared dependency refs, deployed resources, and
+  generated output with `apm audit --ci`;
 - start fresh Codex and Claude sessions in the consumer fork;
 - test a realistic instruction-dependent task;
 - test explicit and implicit activation for selected skills;
