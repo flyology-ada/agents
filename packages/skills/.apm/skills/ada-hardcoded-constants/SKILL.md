@@ -3,7 +3,7 @@ name: ada-hardcoded-constants
 description: Audit Ada specifications and bodies for constants, defaults, bounds, and literals that encode unapproved policy, and document the authority for consequential values in source. Use when reviewing `.ads` or `.adb` values, questioning hard-coded choices, deciding how a value should be represented, or recording why an approved or externally established value exists. Report decisions and alternatives before editing; do not mechanically replace literals.
 license: Apache-2.0
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
 ---
 
 # Audit Ada values
@@ -27,6 +27,41 @@ Inspect both explicit constant declarations and values expressed through:
 Classify visible declarations, private-part declarations, and body-only values
 separately. Exclude generated files from proposed hand edits and locate their
 generator.
+
+## Triage inventory before policy findings
+
+Treat search results and literal counts as an inventory, not as findings. Audit
+declared constants first, starting with visible and private specification
+declarations, then inspect consequential inline defaults, bounds, offsets,
+capacities, tags, field widths, allocation sizes, and state encodings.
+
+Exclude routine mechanics from the decision table by default, including:
+
+- ordinary loop ranges, increments, and local array indices;
+- arithmetic identity values and short-lived counters;
+- conventional zero, false, null, or empty initialization that merely creates
+  the type's neutral state;
+- fixed test-vector data that is established by the test scenario rather than
+  selecting production policy.
+
+This exclusion depends on meaning, not spelling. A site is consequential when
+its value is an independently selectable policy or representation choice,
+rather than an identity, index, or initialization mechanically required by the
+local algorithm or type. Escalate choices that govern public behavior,
+state-machine reachability, storage or wire representation, compatibility,
+safety, resource use, or caller-observable defaults. In particular, do not
+filter a zero or index-like value when it means uninitialized, unknown,
+disabled, not found, automatic placement, unlimited, no timeout, a protocol
+tag, a version, an epoch, a null offset, or another semantic sentinel. Do not
+filter a loop bound when it selects retries, batching, truncation, sampling,
+fairness, security, allocation, or another operational limit. Review fixture
+capacities and format values when they establish or normalize a policy rather
+than merely instantiate an already authorized test case.
+
+Summarize the audit funnel separately: candidate sites scanned, declared
+constants, routine sites excluded by category, consequential candidates, and
+unresolved decision findings. Do not present raw textual matches as policy
+violations.
 
 ## Establish authority
 
