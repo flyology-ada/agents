@@ -10,6 +10,10 @@
   `compatibility`, `metadata`, and `allowed-tools`.
 - Do not duplicate a skill for Codex and Claude. Consumers expose one canonical
   directory through their respective discovery paths.
+- In a fresh clone or worktree, initialize `vendor/agents` before starting
+  Codex or Claude so skill discovery does not encounter broken symlinks. If a
+  client started before initialization, begin a fresh session afterward; the
+  current session's skill catalog might not refresh.
 - Regenerate `AGENTS.md` after changing a referenced instruction or profile.
 - Validate both explicit and implicit skill activation in fresh Codex and
   Claude sessions before proposing a consumer pull request.

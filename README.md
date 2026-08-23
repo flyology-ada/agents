@@ -21,6 +21,17 @@ The shared repository is normally included as `vendor/agents`:
 git submodule add https://github.com/flyology-ada/agents.git vendor/agents
 ```
 
+After cloning a consumer or creating a worktree, initialize the pinned agents
+submodule before starting Codex or Claude:
+
+```sh
+git submodule update --init --recursive vendor/agents
+```
+
+Skill discovery happens when a client session starts. If the client was
+already running while the skill symlinks were broken, start a fresh session
+after initialization.
+
 Create `AGENTS.sources.md` in the consumer with the required `@` imports, put
 `@AGENTS.sources.md` in `CLAUDE.md`, and render the Codex file:
 
