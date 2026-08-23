@@ -15,6 +15,11 @@ selection to Claude Code with:
 ln -s ../.agents/skills .claude/skills
 ```
 
+Code-coupled skills that apply to only one consumer may live directly under
+that consumer's `.agents/skills/`. The `.claude/skills` directory still links
+to the complete selection. Shared workflows remain symlinks to this repository
+instead of being copied into consumers.
+
 The shared repository is normally included as `vendor/agents`:
 
 ```sh

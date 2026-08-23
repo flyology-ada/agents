@@ -72,7 +72,12 @@ def validate(repository: Path, submodule: Path) -> list[str]:
             errors.append("no shared skills selected in .agents/skills")
         for entry in entries:
             if not entry.is_symlink():
-                errors.append(f"skill selection is not a symlink: {entry.relative_to(repository)}")
+                if entry.is_dir() and entry.joinpath("SKILL.md").is_file():
+                    continue
+                errors.append(
+                    "local skill is not a directory with SKILL.md: "
+                    f"{entry.relative_to(repository)}"
+                )
                 continue
             target = entry.resolve()
             try:
