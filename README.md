@@ -1,59 +1,80 @@
-# Flyology agent resources
+# Flyology agent packages
 
-This repository contains reusable agent instructions and Ada development
-skills for repositories in the `flyology-ada` organization.
+This repository publishes reusable Flyology instructions and Ada development
+skills as [Agent Package Manager](https://microsoft.github.io/apm/) packages.
+Consumers select a profile in `apm.yml`; APM resolves its instruction and skill
+dependencies, records exact commits and content hashes in `apm.lock.yaml`, and
+materializes the native Codex and Claude layouts.
 
-Instruction modules are composed with Claude Code-compatible `@path` imports.
-Codex does not expand those imports, so `scripts/render_agents.py` produces a
-checked-in `AGENTS.md` from the same source manifest.
+## Consumer setup
 
-Skills use the open Agent Skills layout. A consuming repository selects skills
-by symlinking their directories into `.agents/skills/`, then exposes the same
-selection to Claude Code with:
+Declare the required profile at an exact tag or commit:
 
-```sh
-ln -s ../.agents/skills .claude/skills
+```yaml
+name: flyology-http-agent-context
+version: 0.1.0
+targets: [codex, claude]
+dependencies:
+  apm:
+    - git: https://github.com/flyology-ada/agents.git
+      path: packages/profiles/ada-library
+      ref: <tag-or-commit>
 ```
 
-Code-coupled skills that apply to only one consumer may live directly under
-that consumer's `.agents/skills/`. The `.claude/skills` directory still links
-to the complete selection. Shared workflows remain symlinks to this repository
-instead of being copied into consumers.
-
-The shared repository is normally included as `vendor/agents`:
+Resolve once and commit the resulting lockfile:
 
 ```sh
-git submodule add https://github.com/flyology-ada/agents.git vendor/agents
+apm install
+apm compile
+git add apm.yml apm.lock.yaml AGENTS.md .apm
 ```
 
-After cloning a consumer or creating a worktree, initialize the pinned agents
-submodule before starting Codex or Claude:
+After cloning or creating a worktree, provision the locked resources before
+starting either client:
 
 ```sh
-git submodule update --init --recursive vendor/agents
+apm install --frozen
+apm compile
 ```
 
-Skill discovery happens when a client session starts. If the client was
-already running while the skill symlinks were broken, start a fresh session
-after initialization.
+Start a fresh Codex or Claude session after installation so its skill catalog
+includes the deployed packages.
 
-Create `AGENTS.sources.md` in the consumer with the required `@` imports, put
-`@AGENTS.sources.md` in `CLAUDE.md`, and render the Codex file:
+## Packages
+
+- `packages/instructions/` contains independently installable instruction
+  modules.
+- `packages/skills/` contains the canonical portable skill bundles used by
+  both clients.
+- `packages/profiles/ada-library` composes the common Ada library rules and
+  skills.
+- `packages/profiles/flyology-website` composes website rules and skills.
+- `packages/profiles/agents-repository` composes the rules for this repository.
+
+Profiles use APM's `git: parent` dependencies so every module resolves from the
+same repository commit. Direct subpackage installs and exact Git refs keep
+publishing distributed; a registry is not required.
+
+## Development
+
+APM 0.28.0 is the validated CLI version for this revision. From the repository
+root, run:
 
 ```sh
-python3 vendor/agents/scripts/render_agents.py AGENTS.sources.md AGENTS.md
+apm install
+apm compile --validate
+apm compile --target codex,claude --clean
+apm audit --ci
 ```
 
-Run `python3 scripts/validate.py` in this repository before publishing an
-agents revision. Consumer repositories should run:
+The root manifest is also a consumer of the agents-repository profile's
+components. Its compilation excludes package source directories so only the
+declared dependency closure enters the generated root context.
 
-```sh
-python3 vendor/agents/scripts/validate_consumer.py .
-```
-
-This checks every consumer `AGENTS.sources.md` against its generated
-`AGENTS.md`, each Claude entry point, and both clients' symlinked skill
-selection.
+Commit `apm.lock.yaml` and generated `AGENTS.md` files. Claude consumes the
+generated `.claude/rules/` tree; both clients consume generated skill trees.
+Do not commit `apm_modules/` or deployed client skill/rule trees: reproduce
+them with the frozen install when creating a clone or worktree.
 
 ## Adapted skills
 

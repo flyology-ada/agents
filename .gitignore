@@ -1,2 +1,11 @@
 __pycache__/
 *.pyc
+/apm_modules/
+/.agents/
+/.claude/rules/
+/.claude/skills/
+/build/
+
+
+# APM dependencies
+apm_modules/

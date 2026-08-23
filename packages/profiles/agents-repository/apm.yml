@@ -1,0 +1,16 @@
+name: flyology-agents-repository-profile
+version: 0.1.0
+type: hybrid
+targets: [codex, claude]
+dependencies:
+  apm:
+    - git: parent
+      path: packages/instructions/repository-workflow
+    - git: parent
+      path: packages/instructions/decision-authority
+    - git: parent
+      path: packages/instructions/agent-instruction-maintenance
+    - git: parent
+      path: packages/instructions/problem-solution-commits
+    - git: parent
+      path: packages/skills
