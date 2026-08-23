@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-08-23T04:54:03.406587+00:00'
+generated_at: '2026-08-23T13:43:24.463814+00:00'
 apm_version: 0.28.0
 dependencies:
 - repo_url: _local/agent-instruction-maintenance
@@ -39,7 +39,7 @@ dependencies:
   deployed_files:
   - .claude/rules/repository-workflow.md
   deployed_file_hashes:
-    .claude/rules/repository-workflow.md: sha256:235ce58902282b487156d6fbfd923d5b11c0abde768fc6f6aae50edea88353cc
+    .claude/rules/repository-workflow.md: sha256:77718869854bfd4ae5556cd0db5c6ad45f34bf2eb4d30a8131642b56a75728e4
   source: local
   local_path: ./packages/instructions/repository-workflow
 - repo_url: _local/skills
@@ -380,7 +380,7 @@ deployments:
   owners:
   - ./packages/instructions/repository-workflow
   active_owner: ./packages/instructions/repository-workflow
-  content_hash: sha256:235ce58902282b487156d6fbfd923d5b11c0abde768fc6f6aae50edea88353cc
+  content_hash: sha256:77718869854bfd4ae5556cd0db5c6ad45f34bf2eb4d30a8131642b56a75728e4
 - kind: project-relative
   target: claude
   value: .claude/skills/ada-api-contract-review

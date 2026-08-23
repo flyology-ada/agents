@@ -8,6 +8,25 @@ materializes the native Codex and Claude layouts.
 
 ## Consumer setup
 
+Install the validated APM CLI release before provisioning a repository. On
+macOS or Linux:
+
+```sh
+curl -sSL https://aka.ms/apm-unix | sh -s -- @v0.28.0
+apm --version
+```
+
+On Windows PowerShell:
+
+```powershell
+$env:VERSION = "v0.28.0"
+irm https://aka.ms/apm-windows | iex
+apm --version
+```
+
+See APM's [installation guide](https://microsoft.github.io/apm/getting-started/installation/)
+for package-manager, pip, mirror, and manual installation alternatives.
+
 Declare the required profile at an exact tag or commit:
 
 ```yaml
@@ -57,8 +76,9 @@ publishing distributed; a registry is not required.
 
 ## Development
 
-APM 0.28.0 is the validated CLI version for this revision. From the repository
-root, run:
+APM 0.28.0 is the validated CLI version for this revision. Install it with the
+commands under [Consumer setup](#consumer-setup), then run from the repository
+root:
 
 ```sh
 apm install
