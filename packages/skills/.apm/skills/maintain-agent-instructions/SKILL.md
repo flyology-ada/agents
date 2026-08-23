@@ -3,7 +3,7 @@ name: maintain-agent-instructions
 description: Create, extract, package, compile, validate, or migrate shared and repository-specific agent instructions and skills with APM. Use for flyology-ada/agents changes, consumer package adoption, local instruction packages, or cross-agent discovery testing.
 license: Apache-2.0
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
 ---
 
 # Maintain shared agent resources
@@ -16,7 +16,9 @@ Keep truly repository-specific instructions in local packages under
 `agent-packages/`, one package for each independently selected scope. Keep only
 rules and skills with the same meaning across repositories in the shared
 `flyology-ada/agents` repository. Reference local packages with APM `path`
-dependencies and shared packages with exact Git commits or immutable tags.
+dependencies. Reference shared packages through an explicit mutable branch or
+semver constraint in `apm.yml`, commit the exact resolved commit and content
+hashes in `apm.lock.yaml`, and advance them only with an explicit `apm update`.
 
 Use APM's native deployment layouts for both clients. Run `apm install` to
 deploy Claude rules and both skill trees, then run
