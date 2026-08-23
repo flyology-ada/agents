@@ -29,8 +29,15 @@ python3 vendor/agents/scripts/render_agents.py AGENTS.sources.md AGENTS.md
 ```
 
 Run `python3 scripts/validate.py` in this repository before publishing an
-agents revision. Consumer repositories should run the renderer with `--check`
-in CI.
+agents revision. Consumer repositories should run:
+
+```sh
+python3 vendor/agents/scripts/validate_consumer.py .
+```
+
+This checks every consumer `AGENTS.sources.md` against its generated
+`AGENTS.md`, each Claude entry point, and both clients' symlinked skill
+selection.
 
 ## Adapted skills
 
