@@ -1,0 +1,22 @@
+name: Validate agent resources
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate instructions and skills
+        run: python3 scripts/validate.py
+      - name: Check generated instructions
+        run: >-
+          python3 scripts/render_agents.py
+          AGENTS.sources.md AGENTS.md --root . --check

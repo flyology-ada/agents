@@ -1,0 +1,9 @@
+This repository includes material adapted from AdaCore/skills:
+
+  https://github.com/AdaCore/skills
+  revision ab0360b0adcb0c0831bc2836aaa4d4bcfdc9cf74
+
+The adapted Alire, GNATdoc, GNATprove, and GNATtest skills are distributed
+under the Apache License 2.0 with LLVM exceptions found in LICENSE. Flyology
+modifications add portable metadata, remove GNATfuzz-dependent material, and
+integrate the skills with the shared instruction layout.
