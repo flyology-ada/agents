@@ -15,6 +15,7 @@ with ASD-STE100.
   responsible actor.
 - Preserve modal meaning: `must` states a requirement, `can` a capability, and
   `may` a possibility.
+- Use present tense for current behavior and the imperative for instructions.
 - Put a prerequisite or safety condition before the action it controls.
 - Use direct, sentence-case headings that state the subject or action.
 - Prefer concrete verbs. Avoid promotional language, rhetorical questions,
@@ -24,10 +25,17 @@ with ASD-STE100.
   make prose shorter.
 - Treat sentence-length scripts as triage tools rather than acceptance gates.
   Review every flagged sentence for meaning and cadence.
+- Keep paragraphs short enough to preserve one subject or task, but do not
+  split connected technical reasoning into unnatural fragments.
 
 Examples and walkthroughs may use a more conversational cadence when that
 helps explain why one step follows another. Commands, contracts, warnings, and
-limits retain the tighter technical style.
+limits retain the tighter technical style. Do not add fictional scenarios,
+decorative stories, or personality that does not improve understanding.
+
+Review examples as paragraphs, not only as sentence-level scores. Combine
+repeated short statements when the relationship becomes clearer, while
+retaining short warnings, results, and important boundaries.
 
 Before finishing, check terminology, HTML syntax, local links, code examples,
 metadata, navigation labels, callouts, captions, SVG accessibility text, code
