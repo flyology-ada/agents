@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-08-26T13:47:41.106187+00:00'
+generated_at: '2026-08-26T14:51:02.721105+00:00'
 apm_version: 0.28.0
 dependencies:
 - repo_url: _local/agent-instruction-maintenance
@@ -248,7 +248,7 @@ dependencies:
     .agents/skills/ada-hardcoded-constants/SKILL.md: sha256:e4732330c0821d017c435c74c18b725c83d5b88687842861a2cc1868dc1e9775
     .agents/skills/ada-native-boundary-review/SKILL.md: sha256:e8a8702e3d79daa7bcf67f1832c50be0694f8990858685c40cccd23d11a3b282
     .agents/skills/ada-portability-review/SKILL.md: sha256:b2f9f2b7d5c2cbdb5164a57d7ec22f3d7a38357745a5f15f61e66155f0806da5
-    .agents/skills/alire-release-review/SKILL.md: sha256:c073af08522f6e3f287e0a008f7be8acb8d6225484327ce2829503a98fe8f6d6
+    .agents/skills/alire-release-review/SKILL.md: sha256:34cf8c54a2df2cf76ac5258bd87c0ea0020de4529a5b02969b843717c98af7d2
     .agents/skills/alire/SKILL.md: sha256:101f0bc3f43679c21b2e297c610e68f2e1f4379c80899e2d063348f9e410aeab
     .agents/skills/alire/references/alire-build.md: sha256:55b7368007a34d979bc61d8f5dc780e9bb904e43b32fa5e046e0c39853c5e9c4
     .agents/skills/alire/references/alire-exec.md: sha256:2e16d8d158c04e90f444cf6ed29a57ce603b7e9931079dd81713a3f938101653
@@ -320,7 +320,7 @@ dependencies:
     .claude/skills/ada-hardcoded-constants/SKILL.md: sha256:e4732330c0821d017c435c74c18b725c83d5b88687842861a2cc1868dc1e9775
     .claude/skills/ada-native-boundary-review/SKILL.md: sha256:e8a8702e3d79daa7bcf67f1832c50be0694f8990858685c40cccd23d11a3b282
     .claude/skills/ada-portability-review/SKILL.md: sha256:b2f9f2b7d5c2cbdb5164a57d7ec22f3d7a38357745a5f15f61e66155f0806da5
-    .claude/skills/alire-release-review/SKILL.md: sha256:c073af08522f6e3f287e0a008f7be8acb8d6225484327ce2829503a98fe8f6d6
+    .claude/skills/alire-release-review/SKILL.md: sha256:34cf8c54a2df2cf76ac5258bd87c0ea0020de4529a5b02969b843717c98af7d2
     .claude/skills/alire/SKILL.md: sha256:101f0bc3f43679c21b2e297c610e68f2e1f4379c80899e2d063348f9e410aeab
     .claude/skills/alire/references/alire-build.md: sha256:55b7368007a34d979bc61d8f5dc780e9bb904e43b32fa5e046e0c39853c5e9c4
     .claude/skills/alire/references/alire-exec.md: sha256:2e16d8d158c04e90f444cf6ed29a57ce603b7e9931079dd81713a3f938101653
@@ -577,7 +577,7 @@ deployments:
   owners:
   - ./packages/skills
   active_owner: ./packages/skills
-  content_hash: sha256:c073af08522f6e3f287e0a008f7be8acb8d6225484327ce2829503a98fe8f6d6
+  content_hash: sha256:34cf8c54a2df2cf76ac5258bd87c0ea0020de4529a5b02969b843717c98af7d2
 - kind: project-relative
   target: claude
   value: .claude/skills/alire/SKILL.md
@@ -1360,7 +1360,7 @@ deployments:
   owners:
   - ./packages/skills
   active_owner: ./packages/skills
-  content_hash: sha256:c073af08522f6e3f287e0a008f7be8acb8d6225484327ce2829503a98fe8f6d6
+  content_hash: sha256:34cf8c54a2df2cf76ac5258bd87c0ea0020de4529a5b02969b843717c98af7d2
 - kind: project-relative
   target: codex
   value: .agents/skills/alire/SKILL.md

@@ -1,0 +1,4 @@
+name: flyology-alire-release-policy
+version: 0.1.0
+type: instructions
+includes: auto
