@@ -127,6 +127,16 @@ them with the frozen install when creating a clone or worktree.
 
 The `alire`, `gnatdoc`, `gnatprove`, and `gnattest` skills are adapted from
 `AdaCore/skills` at revision
-`ab0360b0adcb0c0831bc2836aaa4d4bcfdc9cf74`. GNATfuzz content is intentionally
+`ab0360b0adcb0c0831bc2836aaa4d4bcfdc9cf74`. The `tlaplus-from-source`,
+`tlaplus-add-variable`, and `tlaplus-split-action` skills are imported from
+`tlaplus/AgentSkills` at revision
+`f2adb5e4e2c6250661d1aff8bcc0b9f92d5442ec`. GNATfuzz content is intentionally
 not included because that tool is not available in the target environments.
-See `NOTICE` and the source metadata in each adapted `SKILL.md`.
+See `NOTICE`, the upstream manifest, and each skill's source metadata.
+
+To update the imported TLA+ skills, select and review one upstream commit,
+refresh only the source paths listed in
+`packages/skills/upstream/tlaplus-agent-skills.yml`, reapply the declared
+frontmatter-only transformation, and update the revision and Git blob pins in
+the manifest and skill metadata together. Then run each skill through the
+skill validator followed by the normal APM install, compile, and audit cycle.

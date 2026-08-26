@@ -1,0 +1,16 @@
+repository: https://github.com/tlaplus/AgentSkills
+revision: f2adb5e4e2c6250661d1aff8bcc0b9f92d5442ec
+license: MIT
+license_file: ../../../LICENSES/MIT-tlaplus-AgentSkills.txt
+transformations:
+  - add portable license and provenance metadata to YAML frontmatter
+skills:
+  - source: skills/tlaplus-from-source/SKILL.md
+    source_blob: 01a70c51c8a1e61effc32a43a6b805c95651fea9
+    destination: .apm/skills/tlaplus-from-source/SKILL.md
+  - source: skills/tlaplus-add-variable/SKILL.md
+    source_blob: 6e02a6c28c62b855610ca335c2e74f889d1ef0ec
+    destination: .apm/skills/tlaplus-add-variable/SKILL.md
+  - source: skills/tlaplus-split-action/SKILL.md
+    source_blob: cca3fae9bce7ed6253415f739a2c3b9dfeef4a20
+    destination: .apm/skills/tlaplus-split-action/SKILL.md

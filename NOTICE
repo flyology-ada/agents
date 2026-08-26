@@ -7,3 +7,14 @@ The adapted Alire, GNATdoc, GNATprove, and GNATtest skills are distributed
 under the Apache License 2.0 with LLVM exceptions found in LICENSE. Flyology
 modifications add portable metadata, remove GNATfuzz-dependent material, and
 integrate the skills with the shared instruction layout.
+
+This repository also includes skills from the TLA+ organization's AgentSkills:
+
+  https://github.com/tlaplus/AgentSkills
+  revision f2adb5e4e2c6250661d1aff8bcc0b9f92d5442ec
+
+The imported tlaplus-from-source, tlaplus-add-variable, and
+tlaplus-split-action skills are distributed under the MIT License found in
+LICENSES/MIT-tlaplus-AgentSkills.txt. Flyology modifications add portable
+provenance metadata only. The update manifest and source blob pins are in
+packages/skills/upstream/tlaplus-agent-skills.yml.

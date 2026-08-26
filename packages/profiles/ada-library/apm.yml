@@ -21,4 +21,6 @@ dependencies:
     - git: parent
       path: packages/instructions/problem-solution-commits
     - git: parent
+      path: packages/instructions/tla-plus-assurance
+    - git: parent
       path: packages/skills

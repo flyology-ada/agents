@@ -15,4 +15,5 @@ dependencies:
     - path: ./packages/instructions/review-cycle
     - path: ./packages/instructions/agent-instruction-maintenance
     - path: ./packages/instructions/problem-solution-commits
+    - path: ./packages/instructions/tla-plus-assurance
     - path: ./packages/skills
