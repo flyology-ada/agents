@@ -3,12 +3,13 @@ name: tla-plus
 description: Model and assure Flyology algorithms with TLA+, TLC, and TLAPM/TLAPS, including safety, liveness, fairness, termination, recovery, refinement, counterexample traces, and Ada trace-replay conformance. Use when designing or changing a multi-step, concurrent, distributed, failure-sensitive, or otherwise stateful algorithm whose required outcomes must be established beyond ordinary tests. Do not use for routine local code with no temporal or interleaving behavior.
 license: Apache-2.0
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # TLA+ assurance workflow
 
-Use TLA+ to make the algorithm and its claims precise. Keep the model,
+Follow this workflow from the algorithmic question through reviewable evidence.
+Use TLA+ to make the algorithm and its claims precise, and keep the model,
 bounded exploration, unbounded proof kernel, executable implementation, and
 trace replay connected without claiming that one artifact proves another.
 
@@ -22,7 +23,7 @@ For a matching focused edit, also use the imported official
 Those skills perform the transformation; this workflow still governs the
 assurance campaign, evidence boundaries, and Ada conformance lane.
 
-## Adopt the shared harness
+## Use the shared harness
 
 Install the CLI from a `flyology-ada/tla` checkout into a dedicated absolute
 prefix:
@@ -71,10 +72,6 @@ When building a consumer conformance executable, read
 [runner-and-reporting.md](references/runner-and-reporting.md) for the reusable
 command-line API, stable option grammar, result identity, reporting order, and
 machine-contract boundary.
-
-Keep any JSON implementation behind the foundation's private boundary.
-Counterweave and Flyology.DB may consume this layer; the foundation must not
-depend on either.
 
 ## Establish the assurance boundary
 
@@ -168,9 +165,8 @@ only to recover output that was already retained.
 
 ## Generate and replay implementation traces
 
-For a model with an Ada counterpart, use `flyology-ada/tla` as the independent
-lower trace-generation and replay layer. Flyology.DB and Counterweave are
-downstream consumers, not dependencies of this foundation.
+For a model with an Ada counterpart, use the shared `flyology-ada/tla`
+trace-generation and replay harness.
 
 The conformance lane must:
 

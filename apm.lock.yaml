@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-08-26T22:36:21.230393+00:00'
+generated_at: '2026-08-26T23:03:16.341922+00:00'
 apm_version: 0.28.0
 dependencies:
 - repo_url: _local/agent-instruction-maintenance
@@ -349,7 +349,7 @@ dependencies:
     .agents/skills/tla-plus-learning/references/modeling.md: sha256:e60d726e2dd6b2ff3848e54d74a5ad80ec65071221d547b78465a34e6bfe3123
     .agents/skills/tla-plus-learning/references/proofs.md: sha256:ab762e94b55a0003abd4ebc5816823b7017a2d1c66f6eee2716cc4d1bb44bd29
     .agents/skills/tla-plus-learning/references/resources.md: sha256:e62a2bc37c1e0c2a821428ee0f880d3f5b980bfad66f1c97287e5037634d1489
-    .agents/skills/tla-plus/SKILL.md: sha256:2675309f3d1e09f94c796d9231b538aeb3aeec5a64b6e1b9b8c10dba690f7086
+    .agents/skills/tla-plus/SKILL.md: sha256:a8cfe56fbbb3e8c97b1ed863c85d9fa4422e35d05728832bd468e04a1e17b983
     .agents/skills/tla-plus/references/runner-and-reporting.md: sha256:2a4b2c6955854bfebdbc88106b4bb097fec2420d956c737302bd3358d6956d8f
     .agents/skills/tlaplus-add-variable/SKILL.md: sha256:9e43d627cef529602aa88fcf4b729e26bdc4082cdf06e23af33c8f08931dec6e
     .agents/skills/tlaplus-from-source/SKILL.md: sha256:e3fc651973a5b5d96dc02e2ee7c3baf25fafb30b3af1da56e257832ed228e913
@@ -431,7 +431,7 @@ dependencies:
     .claude/skills/tla-plus-learning/references/modeling.md: sha256:e60d726e2dd6b2ff3848e54d74a5ad80ec65071221d547b78465a34e6bfe3123
     .claude/skills/tla-plus-learning/references/proofs.md: sha256:ab762e94b55a0003abd4ebc5816823b7017a2d1c66f6eee2716cc4d1bb44bd29
     .claude/skills/tla-plus-learning/references/resources.md: sha256:e62a2bc37c1e0c2a821428ee0f880d3f5b980bfad66f1c97287e5037634d1489
-    .claude/skills/tla-plus/SKILL.md: sha256:2675309f3d1e09f94c796d9231b538aeb3aeec5a64b6e1b9b8c10dba690f7086
+    .claude/skills/tla-plus/SKILL.md: sha256:a8cfe56fbbb3e8c97b1ed863c85d9fa4422e35d05728832bd468e04a1e17b983
     .claude/skills/tla-plus/references/runner-and-reporting.md: sha256:2a4b2c6955854bfebdbc88106b4bb097fec2420d956c737302bd3358d6956d8f
     .claude/skills/tlaplus-add-variable/SKILL.md: sha256:9e43d627cef529602aa88fcf4b729e26bdc4082cdf06e23af33c8f08931dec6e
     .claude/skills/tlaplus-from-source/SKILL.md: sha256:e3fc651973a5b5d96dc02e2ee7c3baf25fafb30b3af1da56e257832ed228e913
@@ -1366,7 +1366,7 @@ deployments:
   owners:
   - ./packages/skills
   active_owner: ./packages/skills
-  content_hash: sha256:2675309f3d1e09f94c796d9231b538aeb3aeec5a64b6e1b9b8c10dba690f7086
+  content_hash: sha256:a8cfe56fbbb3e8c97b1ed863c85d9fa4422e35d05728832bd468e04a1e17b983
 - kind: project-relative
   target: claude
   value: .claude/skills/tla-plus/references/runner-and-reporting.md
@@ -2284,7 +2284,7 @@ deployments:
   owners:
   - ./packages/skills
   active_owner: ./packages/skills
-  content_hash: sha256:2675309f3d1e09f94c796d9231b538aeb3aeec5a64b6e1b9b8c10dba690f7086
+  content_hash: sha256:a8cfe56fbbb3e8c97b1ed863c85d9fa4422e35d05728832bd468e04a1e17b983
 - kind: project-relative
   target: codex
   value: .agents/skills/tla-plus/references/runner-and-reporting.md
