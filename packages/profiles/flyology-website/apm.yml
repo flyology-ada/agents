@@ -7,6 +7,8 @@ dependencies:
     - git: parent
       path: packages/instructions/repository-workflow
     - git: parent
+      path: packages/instructions/performance-testing
+    - git: parent
       path: packages/instructions/decision-authority
     - git: parent
       path: packages/instructions/review-cycle

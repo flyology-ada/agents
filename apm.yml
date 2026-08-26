@@ -10,6 +10,7 @@ compilation:
 dependencies:
   apm:
     - path: ./packages/instructions/repository-workflow
+    - path: ./packages/instructions/performance-testing
     - path: ./packages/instructions/decision-authority
     - path: ./packages/instructions/review-cycle
     - path: ./packages/instructions/agent-instruction-maintenance

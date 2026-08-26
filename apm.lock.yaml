@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-08-23T19:32:36.327875+00:00'
+generated_at: '2026-08-26T13:47:41.106187+00:00'
 apm_version: 0.28.0
 dependencies:
 - repo_url: _local/agent-instruction-maintenance
@@ -22,6 +22,16 @@ dependencies:
     .claude/rules/decision-authority.md: sha256:4d87fb288284c597a0dbdb06b5bc0b961d902bda0e2cf322be50b76c340d2da4
   source: local
   local_path: ./packages/instructions/decision-authority
+- repo_url: _local/performance-testing
+  name: flyology-performance-testing
+  version: 0.1.0
+  package_type: apm_package
+  deployed_files:
+  - .claude/rules/performance-testing.md
+  deployed_file_hashes:
+    .claude/rules/performance-testing.md: sha256:c21fbe736f282e6413ecf1233793a2ad9a24bee263e63985d9fef99e14fe81c9
+  source: local
+  local_path: ./packages/instructions/performance-testing
 - repo_url: _local/problem-solution-commits
   name: flyology-problem-solution-commits
   version: 0.1.0
@@ -141,6 +151,9 @@ dependencies:
   - .agents/skills/gnattest/references/workflow.md
   - .agents/skills/maintain-agent-instructions
   - .agents/skills/maintain-agent-instructions/SKILL.md
+  - .agents/skills/performance-testing
+  - .agents/skills/performance-testing/SKILL.md
+  - .agents/skills/performance-testing/scripts/check-power-profile.sh
   - .claude/skills/ada-api-contract-review
   - .claude/skills/ada-api-contract-review/SKILL.md
   - .claude/skills/ada-concurrency-ownership-review
@@ -225,6 +238,9 @@ dependencies:
   - .claude/skills/gnattest/references/workflow.md
   - .claude/skills/maintain-agent-instructions
   - .claude/skills/maintain-agent-instructions/SKILL.md
+  - .claude/skills/performance-testing
+  - .claude/skills/performance-testing/SKILL.md
+  - .claude/skills/performance-testing/scripts/check-power-profile.sh
   deployed_file_hashes:
     .agents/skills/ada-api-contract-review/SKILL.md: sha256:ee95c75b0cd67f94ffc0644e48f4a904c3c5f801ccd9a4346b14366b8921994d
     .agents/skills/ada-concurrency-ownership-review/SKILL.md: sha256:f10c924e5fd3975b7aadaec91b7e736ff6ad562151ade8c828f84038e7747d6f
@@ -296,6 +312,8 @@ dependencies:
     .agents/skills/gnattest/references/test-skeletons.md: sha256:baaaf48c32a9dbdd712db7c41848822aa78cf4aa42e807dd04596b4f546342ec
     .agents/skills/gnattest/references/workflow.md: sha256:fe94afe889db7c6476838b4d688962d4c2742c16d6877e813b7eea0817ca6554
     .agents/skills/maintain-agent-instructions/SKILL.md: sha256:688c9f6c4a116826878602c825f360b2dee03fb95232a07923c4def90af77301
+    .agents/skills/performance-testing/SKILL.md: sha256:e3b16b3b4d6262d70493a707c2ffe4e17d0c8defd870f6b23dc1045d254656d6
+    .agents/skills/performance-testing/scripts/check-power-profile.sh: sha256:985b719f5882147ae7fa41b4b64321f5e554ec38ff6e3601d80e30ae6103446f
     .claude/skills/ada-api-contract-review/SKILL.md: sha256:ee95c75b0cd67f94ffc0644e48f4a904c3c5f801ccd9a4346b14366b8921994d
     .claude/skills/ada-concurrency-ownership-review/SKILL.md: sha256:f10c924e5fd3975b7aadaec91b7e736ff6ad562151ade8c828f84038e7747d6f
     .claude/skills/ada-generated-source-review/SKILL.md: sha256:d0b609df71c5dd9540952107ffb6ac99d5b3fb1532a3b795d11f771ac2198ff9
@@ -366,6 +384,8 @@ dependencies:
     .claude/skills/gnattest/references/test-skeletons.md: sha256:baaaf48c32a9dbdd712db7c41848822aa78cf4aa42e807dd04596b4f546342ec
     .claude/skills/gnattest/references/workflow.md: sha256:fe94afe889db7c6476838b4d688962d4c2742c16d6877e813b7eea0817ca6554
     .claude/skills/maintain-agent-instructions/SKILL.md: sha256:688c9f6c4a116826878602c825f360b2dee03fb95232a07923c4def90af77301
+    .claude/skills/performance-testing/SKILL.md: sha256:e3b16b3b4d6262d70493a707c2ffe4e17d0c8defd870f6b23dc1045d254656d6
+    .claude/skills/performance-testing/scripts/check-power-profile.sh: sha256:985b719f5882147ae7fa41b4b64321f5e554ec38ff6e3601d80e30ae6103446f
   source: local
   local_path: ./packages/skills
 deployments:
@@ -387,6 +407,15 @@ deployments:
   - ./packages/instructions/decision-authority
   active_owner: ./packages/instructions/decision-authority
   content_hash: sha256:4d87fb288284c597a0dbdb06b5bc0b961d902bda0e2cf322be50b76c340d2da4
+- kind: project-relative
+  target: claude
+  value: .claude/rules/performance-testing.md
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/instructions/performance-testing
+  active_owner: ./packages/instructions/performance-testing
+  content_hash: sha256:c21fbe736f282e6413ecf1233793a2ad9a24bee263e63985d9fef99e14fe81c9
 - kind: project-relative
   target: claude
   value: .claude/rules/problem-solution-commits.md
@@ -1171,6 +1200,33 @@ deployments:
   active_owner: ./packages/skills
   content_hash: sha256:688c9f6c4a116826878602c825f360b2dee03fb95232a07923c4def90af77301
 - kind: project-relative
+  target: claude
+  value: .claude/skills/performance-testing
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/performance-testing/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:e3b16b3b4d6262d70493a707c2ffe4e17d0c8defd870f6b23dc1045d254656d6
+- kind: project-relative
+  target: claude
+  value: .claude/skills/performance-testing/scripts/check-power-profile.sh
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:985b719f5882147ae7fa41b4b64321f5e554ec38ff6e3601d80e30ae6103446f
+- kind: project-relative
   target: codex
   value: .agents/skills/ada-api-contract-review
   runtime: null
@@ -1926,3 +1982,30 @@ deployments:
   - ./packages/skills
   active_owner: ./packages/skills
   content_hash: sha256:688c9f6c4a116826878602c825f360b2dee03fb95232a07923c4def90af77301
+- kind: project-relative
+  target: codex
+  value: .agents/skills/performance-testing
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/performance-testing/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:e3b16b3b4d6262d70493a707c2ffe4e17d0c8defd870f6b23dc1045d254656d6
+- kind: project-relative
+  target: codex
+  value: .agents/skills/performance-testing/scripts/check-power-profile.sh
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:985b719f5882147ae7fa41b4b64321f5e554ec38ff6e3601d80e30ae6103446f
