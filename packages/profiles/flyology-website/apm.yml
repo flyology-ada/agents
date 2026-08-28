@@ -11,6 +11,8 @@ dependencies:
     - git: parent
       path: packages/instructions/decision-authority
     - git: parent
+      path: packages/instructions/goal-stewardship
+    - git: parent
       path: packages/instructions/grounded-communication
     - git: parent
       path: packages/instructions/review-cycle
