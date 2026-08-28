@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-08-26T23:03:16.341922+00:00'
+generated_at: '2026-08-28T05:09:14.236332+00:00'
 apm_version: 0.28.0
 dependencies:
 - repo_url: _local/agent-instruction-maintenance
@@ -22,6 +22,16 @@ dependencies:
     .claude/rules/decision-authority.md: sha256:4d87fb288284c597a0dbdb06b5bc0b961d902bda0e2cf322be50b76c340d2da4
   source: local
   local_path: ./packages/instructions/decision-authority
+- repo_url: _local/grounded-communication
+  name: flyology-grounded-communication
+  version: 0.1.0
+  package_type: apm_package
+  deployed_files:
+  - .claude/rules/grounded-communication.md
+  deployed_file_hashes:
+    .claude/rules/grounded-communication.md: sha256:949f1a43613917169eacb0c0c37d661227bdff5c07b5614a4f05683a6e5be970
+  source: local
+  local_path: ./packages/instructions/grounded-communication
 - repo_url: _local/performance-testing
   name: flyology-performance-testing
   version: 0.1.0
@@ -467,6 +477,15 @@ deployments:
   - ./packages/instructions/decision-authority
   active_owner: ./packages/instructions/decision-authority
   content_hash: sha256:4d87fb288284c597a0dbdb06b5bc0b961d902bda0e2cf322be50b76c340d2da4
+- kind: project-relative
+  target: claude
+  value: .claude/rules/grounded-communication.md
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/instructions/grounded-communication
+  active_owner: ./packages/instructions/grounded-communication
+  content_hash: sha256:949f1a43613917169eacb0c0c37d661227bdff5c07b5614a4f05683a6e5be970
 - kind: project-relative
   target: claude
   value: .claude/rules/performance-testing.md
