@@ -27,8 +27,12 @@ description: Preserve repository state and use evidence-driven implementation wo
   README prose.
 - Use `rg` or `rg --files` for discovery and `apply_patch` for hand edits.
 - Keep changes focused on the requested problem.
-- Run the repository's documented checks and `git diff --check` before
-  presenting a change.
+- Run the repository's documented required checks and `git diff --check`
+  before presenting a change. A development tool being mentioned in repository
+  documentation does not by itself make installing or debugging that tool a
+  completion gate; derive required gates from maintained CI and release
+  workflows. Keep optional hygiene checks bounded, and report skipped checks
+  when their tools are not already provisioned.
 - Do not claim behavior, portability, proof, test coverage, or performance
   beyond evidence from maintained code, scripts, proof runs, tests, or
   benchmarks.

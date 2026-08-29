@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-08-28T14:39:18.266995+00:00'
+generated_at: '2026-08-29T00:15:26.176762+00:00'
 apm_version: 0.28.0
 dependencies:
 - repo_url: _local/agent-instruction-maintenance
@@ -69,7 +69,7 @@ dependencies:
   deployed_files:
   - .claude/rules/repository-workflow.md
   deployed_file_hashes:
-    .claude/rules/repository-workflow.md: sha256:69bffd5b645f5e5eddb719c54afe6c573a8481228f4bef2096ed8c6c55c98e85
+    .claude/rules/repository-workflow.md: sha256:2b8252cfcbf7cf235ed6a0517b07a52093b91ffb4a7522614c8730f6e317828f
   source: local
   local_path: ./packages/instructions/repository-workflow
 - repo_url: _local/review-cycle
@@ -531,7 +531,7 @@ deployments:
   owners:
   - ./packages/instructions/repository-workflow
   active_owner: ./packages/instructions/repository-workflow
-  content_hash: sha256:69bffd5b645f5e5eddb719c54afe6c573a8481228f4bef2096ed8c6c55c98e85
+  content_hash: sha256:2b8252cfcbf7cf235ed6a0517b07a52093b91ffb4a7522614c8730f6e317828f
 - kind: project-relative
   target: claude
   value: .claude/rules/review-cycle.md
