@@ -21,13 +21,6 @@ Capture its output with the measurements. Interpret its exit status as:
 - `10`: a low-power or other reduced-performance profile was detected;
 - `2`: the operating system or active profile could not be classified.
 
-On macOS, the detector reads the active power source from
-`system_profiler SPPowerDataType`. On Linux, it prefers
-`powerprofilesctl get` and falls back to the kernel's read-only
-`/sys/firmware/acpi/platform_profile` interface. It does not infer a profile
-from CPU frequency governors because names such as `powersave` do not have
-consistent performance semantics across scaling drivers.
-
 When the detector returns `10`, follow the repository's performance-testing
 rule: defer by default and ask the user before proceeding when performance work
 is in scope. Treat status `2` as unknown rather than assuming a normal profile.

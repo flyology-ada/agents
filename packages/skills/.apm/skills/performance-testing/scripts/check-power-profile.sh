@@ -1,76 +1,93 @@
 #!/bin/sh
 
-# Apple documents Automatic, Low Power, and High Power as the macOS power
-# modes: https://support.apple.com/101613
+# Apple documents Automatic, Low Power, and High Power as the selectable macOS
+# energy modes: https://support.apple.com/101613
 detect_macos() {
-    if ! command -v system_profiler >/dev/null 2>&1; then
-        emit_result macos system_profiler unknown unknown unknown
+    if ! command -v pmset >/dev/null 2>&1; then
+        emit_result macos pmset unknown unknown unknown
         return 2
     fi
 
-    active=$(
-        LC_ALL=C system_profiler SPPowerDataType 2>/dev/null |
-            awk '
-                function report_source(    profile) {
-                    if (!reported && current) {
-                        if (low && !high)
-                            profile = "low-power"
-                        else if (high && !low)
-                            profile = "high-power"
-                        else if (!low && !high && (saw_low || saw_high))
-                            profile = "automatic"
-                        else
-                            profile = "unknown"
+    power_source=$(
+        LC_ALL=C pmset -g batt 2>/dev/null |
+            awk -F "'" '/^Now drawing from / { print $2; exit }'
+    )
 
-                        print source "|" profile
-                        reported = 1
-                    }
-                }
+    case "$power_source" in
+        "AC Power" | "Battery Power" | "UPS Power") ;;
+        *)
+            emit_result macos pmset unknown unknown unknown
+            return 2
+            ;;
+    esac
 
-                /^      [^[:space:]][^:]*:$/ {
-                    report_source()
+    # Current macOS releases encode Automatic, Low Power, and High Power as
+    # powermode 0, 1, and 2. Older releases expose separate lowpowermode and
+    # highpowermode booleans, so retain that representation as a fallback.
+    profile=$(
+        LC_ALL=C pmset -g custom 2>/dev/null |
+            awk -v wanted="$power_source" '
+                /^(AC|Battery|UPS) Power:$/ {
                     source = $0
-                    sub(/^[[:space:]]+/, "", source)
                     sub(/:$/, "", source)
-                    current = low = high = saw_low = saw_high = 0
                     next
                 }
 
-                /^[[:space:]]+Current Power Source: Yes$/ { current = 1 }
-                /^[[:space:]]+Low Power Mode:/ {
-                    saw_low = 1
-                    if ($NF == "Yes")
-                        low = 1
+                source == wanted && $1 == "powermode" {
+                    power_mode = $2
                 }
-                /^[[:space:]]+High Power Mode:/ {
-                    saw_high = 1
-                    if ($NF == "Yes")
-                        high = 1
+                source == wanted && $1 == "lowpowermode" {
+                    low_power_mode = $2
+                    saw_low_power_mode = 1
+                }
+                source == wanted && $1 == "highpowermode" {
+                    high_power_mode = $2
+                    saw_high_power_mode = 1
                 }
 
-                END { report_source() }
+                END {
+                    if (power_mode != "") {
+                        if (power_mode == "0")
+                            print "automatic"
+                        else if (power_mode == "1")
+                            print "low-power"
+                        else if (power_mode == "2")
+                            print "high-power"
+                        else
+                            print "unknown"
+                    } else if ((saw_low_power_mode && low_power_mode !~ /^[01]$/) ||
+                               (saw_high_power_mode && high_power_mode !~ /^[01]$/)) {
+                        print "unknown"
+                    } else if (low_power_mode == "1" && high_power_mode != "1") {
+                        print "low-power"
+                    } else if (high_power_mode == "1" && low_power_mode != "1") {
+                        print "high-power"
+                    } else if ((saw_low_power_mode || saw_high_power_mode) &&
+                               low_power_mode != "1" && high_power_mode != "1") {
+                        print "automatic"
+                    } else {
+                        print "unknown"
+                    }
+                }
             '
     )
 
-    if [ -z "$active" ]; then
-        emit_result macos system_profiler unknown unknown unknown
+    if [ -z "$profile" ]; then
+        emit_result macos pmset unknown unknown "$power_source"
         return 2
     fi
 
-    power_source=${active%%|*}
-    profile=${active#*|}
-
     case "$profile" in
         low-power)
-            emit_result macos system_profiler "$profile" true "$power_source"
+            emit_result macos pmset "$profile" true "$power_source"
             return 10
             ;;
         automatic | high-power)
-            emit_result macos system_profiler "$profile" false "$power_source"
+            emit_result macos pmset "$profile" false "$power_source"
             return 0
             ;;
         *)
-            emit_result macos system_profiler unknown unknown "$power_source"
+            emit_result macos pmset unknown unknown "$power_source"
             return 2
             ;;
     esac

@@ -1,0 +1,64 @@
+#!/bin/sh
+
+case "$*" in
+    "-g batt")
+        case "$TEST_CASE" in
+            battery-low)
+                printf "Now drawing from 'Battery Power'\n"
+                ;;
+            missing-source)
+                printf "No active power source\n"
+                ;;
+            *)
+                printf "Now drawing from 'AC Power'\n"
+                ;;
+        esac
+        ;;
+    "-g custom")
+        case "$TEST_CASE" in
+            selected-high | battery-low)
+                printf '%s\n' \
+                    'Battery Power:' \
+                    ' powermode            1' \
+                    'AC Power:' \
+                    ' powermode            2'
+                ;;
+            selected-automatic)
+                printf '%s\n' 'AC Power:' ' powermode            0'
+                ;;
+            unknown-powermode)
+                printf '%s\n' 'AC Power:' ' powermode            7'
+                ;;
+            legacy-high)
+                printf '%s\n' \
+                    'AC Power:' \
+                    ' lowpowermode         0' \
+                    ' highpowermode        1'
+                ;;
+            legacy-low)
+                printf '%s\n' \
+                    'AC Power:' \
+                    ' lowpowermode         1' \
+                    ' highpowermode        0'
+                ;;
+            legacy-automatic)
+                printf '%s\n' \
+                    'AC Power:' \
+                    ' lowpowermode         0' \
+                    ' highpowermode        0'
+                ;;
+            legacy-conflict)
+                printf '%s\n' \
+                    'AC Power:' \
+                    ' lowpowermode         1' \
+                    ' highpowermode        1'
+                ;;
+            missing-profile)
+                printf '%s\n' 'AC Power:' ' sleep                10'
+                ;;
+        esac
+        ;;
+    *)
+        exit 64
+        ;;
+esac

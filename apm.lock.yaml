@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-08-30T04:39:17.445052+00:00'
+generated_at: '2026-08-30T20:21:39.638445+00:00'
 apm_version: 0.28.0
 dependencies:
 - repo_url: _local/agent-instruction-maintenance
@@ -174,6 +174,9 @@ dependencies:
   - .agents/skills/performance-testing
   - .agents/skills/performance-testing/SKILL.md
   - .agents/skills/performance-testing/scripts/check-power-profile.sh
+  - .agents/skills/performance-testing/tests/bin/pmset
+  - .agents/skills/performance-testing/tests/bin/uname
+  - .agents/skills/performance-testing/tests/check-power-profile.sh
   - .agents/skills/tla-plus
   - .agents/skills/tla-plus-learning
   - .agents/skills/tla-plus-learning/SKILL.md
@@ -278,6 +281,9 @@ dependencies:
   - .claude/skills/performance-testing
   - .claude/skills/performance-testing/SKILL.md
   - .claude/skills/performance-testing/scripts/check-power-profile.sh
+  - .claude/skills/performance-testing/tests/bin/pmset
+  - .claude/skills/performance-testing/tests/bin/uname
+  - .claude/skills/performance-testing/tests/check-power-profile.sh
   - .claude/skills/tla-plus
   - .claude/skills/tla-plus-learning
   - .claude/skills/tla-plus-learning/SKILL.md
@@ -366,8 +372,11 @@ dependencies:
     .agents/skills/gnattest/references/test-skeletons.md: sha256:baaaf48c32a9dbdd712db7c41848822aa78cf4aa42e807dd04596b4f546342ec
     .agents/skills/gnattest/references/workflow.md: sha256:fe94afe889db7c6476838b4d688962d4c2742c16d6877e813b7eea0817ca6554
     .agents/skills/maintain-agent-instructions/SKILL.md: sha256:688c9f6c4a116826878602c825f360b2dee03fb95232a07923c4def90af77301
-    .agents/skills/performance-testing/SKILL.md: sha256:e3b16b3b4d6262d70493a707c2ffe4e17d0c8defd870f6b23dc1045d254656d6
-    .agents/skills/performance-testing/scripts/check-power-profile.sh: sha256:985b719f5882147ae7fa41b4b64321f5e554ec38ff6e3601d80e30ae6103446f
+    .agents/skills/performance-testing/SKILL.md: sha256:ed0d4c265b683cc977f8022011e0ccdffcc0d500221b556d045129ab2b8c8d52
+    .agents/skills/performance-testing/scripts/check-power-profile.sh: sha256:f0a0b961b3c4d849bce37dbeb0857450fdd974a8d2e546c59c09f157bc467a16
+    .agents/skills/performance-testing/tests/bin/pmset: sha256:181b774c39dc7259e685b6751e2f87988a52c5ad23e550b1294bd13d28a5e43c
+    .agents/skills/performance-testing/tests/bin/uname: sha256:351692124668bc856ef4654e02dd2ea29e5ce3e40f0a8058299c33cd41a4e09c
+    .agents/skills/performance-testing/tests/check-power-profile.sh: sha256:bcb167169810a3e354919c3ddf79df7e778eeab2304c2879426482ae92b4eca9
     .agents/skills/tla-plus-learning/SKILL.md: sha256:81d2c5f8f2af55f05e2a8360188f6a962600b9f1edc7301b4c06af5ea1bff44b
     .agents/skills/tla-plus-learning/references/model-checking.md: sha256:6540c75d52a460241cb83529924b36341ddaace50c021ec29c8d89319c5e6a02
     .agents/skills/tla-plus-learning/references/modeling.md: sha256:e60d726e2dd6b2ff3848e54d74a5ad80ec65071221d547b78465a34e6bfe3123
@@ -449,8 +458,11 @@ dependencies:
     .claude/skills/gnattest/references/test-skeletons.md: sha256:baaaf48c32a9dbdd712db7c41848822aa78cf4aa42e807dd04596b4f546342ec
     .claude/skills/gnattest/references/workflow.md: sha256:fe94afe889db7c6476838b4d688962d4c2742c16d6877e813b7eea0817ca6554
     .claude/skills/maintain-agent-instructions/SKILL.md: sha256:688c9f6c4a116826878602c825f360b2dee03fb95232a07923c4def90af77301
-    .claude/skills/performance-testing/SKILL.md: sha256:e3b16b3b4d6262d70493a707c2ffe4e17d0c8defd870f6b23dc1045d254656d6
-    .claude/skills/performance-testing/scripts/check-power-profile.sh: sha256:985b719f5882147ae7fa41b4b64321f5e554ec38ff6e3601d80e30ae6103446f
+    .claude/skills/performance-testing/SKILL.md: sha256:ed0d4c265b683cc977f8022011e0ccdffcc0d500221b556d045129ab2b8c8d52
+    .claude/skills/performance-testing/scripts/check-power-profile.sh: sha256:f0a0b961b3c4d849bce37dbeb0857450fdd974a8d2e546c59c09f157bc467a16
+    .claude/skills/performance-testing/tests/bin/pmset: sha256:181b774c39dc7259e685b6751e2f87988a52c5ad23e550b1294bd13d28a5e43c
+    .claude/skills/performance-testing/tests/bin/uname: sha256:351692124668bc856ef4654e02dd2ea29e5ce3e40f0a8058299c33cd41a4e09c
+    .claude/skills/performance-testing/tests/check-power-profile.sh: sha256:bcb167169810a3e354919c3ddf79df7e778eeab2304c2879426482ae92b4eca9
     .claude/skills/tla-plus-learning/SKILL.md: sha256:81d2c5f8f2af55f05e2a8360188f6a962600b9f1edc7301b4c06af5ea1bff44b
     .claude/skills/tla-plus-learning/references/model-checking.md: sha256:6540c75d52a460241cb83529924b36341ddaace50c021ec29c8d89319c5e6a02
     .claude/skills/tla-plus-learning/references/modeling.md: sha256:e60d726e2dd6b2ff3848e54d74a5ad80ec65071221d547b78465a34e6bfe3123
@@ -1329,7 +1341,7 @@ deployments:
   owners:
   - ./packages/skills
   active_owner: ./packages/skills
-  content_hash: sha256:e3b16b3b4d6262d70493a707c2ffe4e17d0c8defd870f6b23dc1045d254656d6
+  content_hash: sha256:ed0d4c265b683cc977f8022011e0ccdffcc0d500221b556d045129ab2b8c8d52
 - kind: project-relative
   target: claude
   value: .claude/skills/performance-testing/scripts/check-power-profile.sh
@@ -1338,7 +1350,34 @@ deployments:
   owners:
   - ./packages/skills
   active_owner: ./packages/skills
-  content_hash: sha256:985b719f5882147ae7fa41b4b64321f5e554ec38ff6e3601d80e30ae6103446f
+  content_hash: sha256:f0a0b961b3c4d849bce37dbeb0857450fdd974a8d2e546c59c09f157bc467a16
+- kind: project-relative
+  target: claude
+  value: .claude/skills/performance-testing/tests/bin/pmset
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:181b774c39dc7259e685b6751e2f87988a52c5ad23e550b1294bd13d28a5e43c
+- kind: project-relative
+  target: claude
+  value: .claude/skills/performance-testing/tests/bin/uname
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:351692124668bc856ef4654e02dd2ea29e5ce3e40f0a8058299c33cd41a4e09c
+- kind: project-relative
+  target: claude
+  value: .claude/skills/performance-testing/tests/check-power-profile.sh
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:bcb167169810a3e354919c3ddf79df7e778eeab2304c2879426482ae92b4eca9
 - kind: project-relative
   target: claude
   value: .claude/skills/tla-plus
@@ -2265,7 +2304,7 @@ deployments:
   owners:
   - ./packages/skills
   active_owner: ./packages/skills
-  content_hash: sha256:e3b16b3b4d6262d70493a707c2ffe4e17d0c8defd870f6b23dc1045d254656d6
+  content_hash: sha256:ed0d4c265b683cc977f8022011e0ccdffcc0d500221b556d045129ab2b8c8d52
 - kind: project-relative
   target: codex
   value: .agents/skills/performance-testing/scripts/check-power-profile.sh
@@ -2274,7 +2313,34 @@ deployments:
   owners:
   - ./packages/skills
   active_owner: ./packages/skills
-  content_hash: sha256:985b719f5882147ae7fa41b4b64321f5e554ec38ff6e3601d80e30ae6103446f
+  content_hash: sha256:f0a0b961b3c4d849bce37dbeb0857450fdd974a8d2e546c59c09f157bc467a16
+- kind: project-relative
+  target: codex
+  value: .agents/skills/performance-testing/tests/bin/pmset
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:181b774c39dc7259e685b6751e2f87988a52c5ad23e550b1294bd13d28a5e43c
+- kind: project-relative
+  target: codex
+  value: .agents/skills/performance-testing/tests/bin/uname
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:351692124668bc856ef4654e02dd2ea29e5ce3e40f0a8058299c33cd41a4e09c
+- kind: project-relative
+  target: codex
+  value: .agents/skills/performance-testing/tests/check-power-profile.sh
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/skills
+  active_owner: ./packages/skills
+  content_hash: sha256:bcb167169810a3e354919c3ddf79df7e778eeab2304c2879426482ae92b4eca9
 - kind: project-relative
   target: codex
   value: .agents/skills/tla-plus
