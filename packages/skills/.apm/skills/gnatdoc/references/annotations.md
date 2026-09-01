@@ -13,7 +13,8 @@ like parameters or components).
 The set of locations `gnatdoc` searches for the comment block depends on
 the entity kind and the documentation style (`leading`, `trailing`, or
 `gnat`). See [styles.md](styles.md) for the rules; the examples below
-mostly use `trailing`/`gnat` (the default GNAT convention).
+mostly use `trailing`/`gnat` to illustrate GNATdoc's CLI default. For new or
+otherwise unconfigured project work, the agent default is `leading`.
 
 (The extractor also recognizes an undocumented `@belongs-to` tag, which
 attaches an entity's documentation to another entity; it is not part of

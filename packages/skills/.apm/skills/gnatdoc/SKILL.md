@@ -47,19 +47,21 @@ right invocation in this order:
 `gnatdoc` always requires a project file. The minimal invocation is:
 
 ```bash
-gnatdoc -P <project.gpr>
+gnatdoc --style=leading -P <project.gpr>
 ```
 
-This generates HTML documentation under `<obj>/gnatdoc/html/` (the default
-output is `<obj>/gnatdoc/<backend-name>/`, where `<obj>` is the object
-directory of the root project). Open `index.html` in that directory to view
-the output.
+This skill defaults new or otherwise unconfigured projects to leading
+documentation comments, so it passes `--style=leading` explicitly. GNATdoc's
+own CLI default is `gnat` (trailing). The command generates HTML documentation
+under `<obj>/gnatdoc/html/` (the default output is
+`<obj>/gnatdoc/<backend-name>/`, where `<obj>` is the object directory of the
+root project). Open `index.html` in that directory to view the output.
 
 A more complete invocation that names the backend explicitly, enables
 undocumented-entity warnings, and tees the output for later inspection:
 
 ```bash
-gnatdoc --backend=html --warnings -P <project.gpr> 2>&1 | tee gnatdoc-run.txt
+gnatdoc --backend=html --style=leading --warnings -P <project.gpr> 2>&1 | tee gnatdoc-run.txt
 ```
 
 Common arguments:
@@ -70,7 +72,7 @@ Common arguments:
 | `--backend=<html\|odf\|rst\|rstpt\|xml>` | Output format. Default `html`. See [references/backends.md](references/backends.md). |
 | `--html-oop-style` | (HTML backend only) Group subprograms by tagged type, generating a separate page for each tagged type. Replaces the older `--backend=html:oop` syntax. |
 | `--generate=<public\|private\|body>` | Which entities to document. `public` (default) = public part of specs; `private` = public + private spec; `body` = specs + library-level body entities. See [references/command-reference.md](references/command-reference.md#generate). |
-| `--style=<leading\|trailing\|gnat>` | Where documentation comments sit relative to declarations. Default `gnat`; `trailing` and `gnat` are equivalent. See [references/styles.md](references/styles.md). |
+| `--style=<leading\|trailing\|gnat>` | Where documentation comments sit relative to declarations. GNATdoc defaults to `gnat`; this skill defaults unconfigured project work to `leading`. `trailing` and `gnat` are equivalent. See [references/styles.md](references/styles.md). |
 | `-O, --output-dir DIR` | Override the output directory. Overrides `Documentation'Output_Dir` in the project file. |
 | `-X NAME=VALUE` | Set a scenario variable on the project. Repeatable. |
 | `--warnings` | Emit warnings for every undocumented entity — subprograms, parameters, return values, components, discriminants, enumeration literals, generic formals, raised exceptions. Informational only; it never changes the generated output. See [Verifying a run](#verifying-a-run) for how to act on the list. |
@@ -119,12 +121,14 @@ Before running `gnatdoc` on a new project, do these in order:
    `--style=trailing`, and `--style=gnat` change *where* `gnatdoc` looks
    for the comment block attached to each declaration; mixing styles
    within a project leads to silently dropped documentation. If the user
-   or the existing build scripts specify a style, use it. Otherwise
-   survey the sources to match the existing convention, and ask the user
-   only if the survey is inconclusive. See
+   or the existing build scripts specify a style, use it. Otherwise survey
+   the sources and preserve a clear existing convention. For a new project
+   or one with no established convention, use `leading`. Do not treat this
+   default as authorization to migrate an existing trailing or mixed project.
+   See
    [references/styles.md § Determining a project's existing style](references/styles.md#determining-a-projects-existing-style).
-   Record the choice in the build script that invokes `gnatdoc` — no
-   project-file attribute exists for the style.
+   Pass the selected style explicitly and record it in the build script that
+   invokes `gnatdoc` — no project-file attribute exists for the style.
 
 3. **Agree on the documentation scope.** Ask the user which entities to
    document: `--generate=public` (public spec only — the default),

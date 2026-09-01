@@ -3,6 +3,10 @@
 `gnatdoc` ships with the following output backends, selected via
 `--backend`:
 
+The command examples below assume a new or otherwise unconfigured project and
+therefore pass `--style=leading`. Replace that value when an established
+project convention or explicit user choice selects another style.
+
 | Backend | `--backend` value | Output |
 |---------|-------------------|--------|
 | HTML (default) | `html` | A set of HTML files browseable in any web browser. Pass the separate `--html-oop-style` switch to group subprograms by tagged type. |
@@ -22,8 +26,8 @@ defaults.
 The default backend.
 
 ```bash
-gnatdoc -P project.gpr               # equivalent to --backend=html
-gnatdoc --backend=html -P project.gpr
+gnatdoc --style=leading -P project.gpr  # equivalent to --backend=html
+gnatdoc --backend=html --style=leading -P project.gpr
 ```
 
 ### Layout modes
@@ -35,7 +39,7 @@ grouping — subprograms are grouped by tagged type, with one page per
 tagged type:
 
 ```bash
-gnatdoc --backend=html --html-oop-style -P project.gpr
+gnatdoc --backend=html --html-oop-style --style=leading -P project.gpr
 ```
 
 OOP mode is appropriate for object-oriented Ada codebases where readers
@@ -79,7 +83,7 @@ Writer, Microsoft Word, and other office suites. Useful for distributing
 reference documentation as a single file or for printing.
 
 ```bash
-gnatdoc --backend=odf -P project.gpr
+gnatdoc --backend=odf --style=leading -P project.gpr
 ```
 
 Output can be customized by overriding
@@ -97,7 +101,7 @@ Generates `.rst` files intended for processing by
 extension.
 
 ```bash
-gnatdoc --backend=rst -P project.gpr
+gnatdoc --backend=rst --style=leading -P project.gpr
 ```
 
 Use this backend when you want `gnatdoc` output to integrate into an
@@ -114,7 +118,7 @@ output (non-OOP layout is not supported in pass-through mode); accepts
 no backend-specific options.
 
 ```bash
-gnatdoc --backend=rstpt -P project.gpr
+gnatdoc --backend=rstpt --style=leading -P project.gpr
 ```
 
 The output is reStructuredText with `ada:` Sphinx directives, the same
@@ -131,7 +135,7 @@ Generates an XML representation of the extracted documentation, intended
 for downstream tooling rather than direct consumption.
 
 ```bash
-gnatdoc --backend=xml -P project.gpr
+gnatdoc --backend=xml --style=leading -P project.gpr
 ```
 
 Use this backend to feed `gnatdoc`'s extracted documentation into a

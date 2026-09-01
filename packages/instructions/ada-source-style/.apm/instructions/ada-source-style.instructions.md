@@ -9,6 +9,9 @@ description: Apply shared source and documentation conventions to Ada changes.
 - Keep policy, validation, retry behavior, ownership, and cleanup decisions in
   Ada when Ada can express them.
 - Preserve the owning project's formatting and warning configuration.
+- Use leading GNATdoc comments for new or otherwise unconfigured documentation.
+  Preserve an established project style or explicit user choice, and do not
+  silently migrate existing trailing comments.
 - Treat formatting as bounded hygiene, not an independent assurance campaign.
   After editing handwritten Ada, run the repository's maintained formatter at
   most once before the required tests, and run at most one maintained format

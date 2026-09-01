@@ -25,16 +25,16 @@ literals).
 Pick one per project and keep to it — mixing styles within one
 invocation causes one half of the comments to be silently ignored.
 
-- **`gnat`** (or equivalently `trailing`) is the right default for
-  projects that follow AdaCore's own conventions (GNAT runtime,
-  AdaCore-published crates). Documentation reads naturally after the
-  declaration. This is the default if `--style` is omitted.
-- **`leading`** is the right default for teams coming from C/C++/Java
-  with Doxygen/Javadoc habits; doc comments live "above" each
-  declaration.
+- **`leading`** is the agent default for a new or otherwise unconfigured
+  project. Doc comments live above each declaration, matching the shared
+  Flyology convention.
+- **`gnat`** (or equivalently `trailing`) remains appropriate when the user,
+  build scripts, or existing sources establish AdaCore's convention. It is
+  also GNATdoc's own default when `--style` is omitted.
 
 There is no third option. `trailing` and `gnat` differ only in spelling.
-Prefer whichever name reads more clearly in your build scripts —
+Pass the chosen style explicitly so GNATdoc's CLI default cannot silently
+override the project convention. When trailing style is selected,
 `--style=gnat` is the convention in AdaCore tooling.
 
 Record the choice somewhere durable — in the build script that calls
@@ -53,13 +53,14 @@ than choosing one:
    whether doc blocks sit above declarations (`leading`) or below them
    (`trailing`/`gnat`).
 3. **Cross-check empirically** if unsure: run `gnatdoc --warnings` once
-   with the default `gnat` style and once with `--style=leading`, and
+   with `--style=gnat` and once with `--style=leading`, and
    compare the number of "not documented" warnings — the correct style
    produces far fewer.
 
-If the results are inconclusive — comment placement is mixed, or the
-project has no documentation yet — ask the user which convention to
-adopt rather than picking one silently.
+If the project has no documentation or other established convention, use
+`leading`. If an existing project is mixed, do not silently normalize it:
+report the inconsistency and ask which style to preserve before migrating
+comments.
 
 ## `gnat` (trailing) style — example
 
@@ -191,8 +192,7 @@ There is no automated migration. To move an existing project from
 
 1. Audit which style the existing comments use. A mixed codebase produces
    misleading `--warnings` output until it is normalized.
-2. Switch the doc blocks one package at a time, running
-   `gnatdoc --warnings` after each batch to confirm no documentation was
-   lost.
-3. Update the build command (or `Documentation` package) to record the
-   new default.
+2. Switch the doc blocks one package at a time, running `gnatdoc --warnings`
+   with the target style passed explicitly after each batch to confirm no
+   documentation was lost.
+3. Update the build command to record the selected style explicitly.

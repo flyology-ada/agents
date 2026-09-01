@@ -82,7 +82,10 @@ comment blocks relative to a declaration.
 | `gnat`     | Same as `trailing`. The default if `--style` is not given. |
 
 `trailing` and `gnat` are accepted as separate spellings but the tool treats
-them identically. See [styles.md](styles.md) for examples and the rationale.
+them identically. The CLI default is distinct from this skill's workflow
+default: for a new or otherwise unconfigured project, pass
+`--style=leading`. Preserve an explicit user choice or established project
+style. See [styles.md](styles.md) for examples and the rationale.
 
 ### `-O, --output-dir=<output_dir>`
 
@@ -129,6 +132,8 @@ If no options are given (other than `-P`), `gnatdoc`:
 - Uses the **HTML** backend.
 - Generates documentation only for **public** specifications
   (`--generate=public`).
+- Uses the **`gnat`** (trailing) documentation style. Agent-assisted work
+  passes an explicit style instead of relying on this CLI default.
 - Writes output under `<obj>/gnatdoc/<backend>/` — e.g.
   `<obj>/gnatdoc/html/` for the default HTML backend — where `<obj>` is
   the object directory of the root project.

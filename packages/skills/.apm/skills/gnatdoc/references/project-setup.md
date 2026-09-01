@@ -160,7 +160,7 @@ end My_Project;
 Run with:
 
 ```bash
-gnatdoc --warnings -P my_project.gpr
+gnatdoc --style=leading --warnings -P my_project.gpr
 ```
 
 The `--warnings` flag reports undocumented entities.
