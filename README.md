@@ -92,7 +92,8 @@ clients' skill trees; the Codex-only compile generates the committed
   both clients.
 - `packages/profiles/ada-library` composes the common Ada library rules and
   skills.
-- `packages/profiles/flyology-website` composes website rules and skills.
+- `packages/profiles/flyology-website` composes the shared repository rules and
+  website workflow skill used by website-kit.
 - `packages/profiles/agents-repository` composes the rules for this repository.
 
 Profiles use APM's `git: parent` dependencies so every module resolves from the

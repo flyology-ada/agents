@@ -17,16 +17,6 @@ dependencies:
     - git: parent
       path: packages/instructions/review-cycle
     - git: parent
-      path: packages/instructions/website-submodules
-    - git: parent
-      path: packages/instructions/website-technical-writing
-    - git: parent
-      path: packages/instructions/website-api-links
-    - git: parent
-      path: packages/instructions/website-journal
-    - git: parent
-      path: packages/instructions/website-review
-    - git: parent
       path: packages/instructions/problem-solution-commits
     - git: parent
       path: packages/skills
