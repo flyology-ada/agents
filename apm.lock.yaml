@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-09-01T10:29:23.536277+00:00'
+generated_at: '2026-09-01T20:09:27.564243+00:00'
 apm_version: 0.28.0
 dependencies:
 - repo_url: _local/agent-instruction-maintenance
@@ -12,6 +12,16 @@ dependencies:
     .claude/rules/agent-instruction-maintenance.md: sha256:55e76712aa0c227ed331f90acdd9cac1e6e6b8b01234860e04459ff5a950f3ed
   source: local
   local_path: ./packages/instructions/agent-instruction-maintenance
+- repo_url: _local/apm-update-awareness
+  name: flyology-apm-update-awareness
+  version: 0.1.0
+  package_type: apm_package
+  deployed_files:
+  - .claude/rules/apm-update-awareness.md
+  deployed_file_hashes:
+    .claude/rules/apm-update-awareness.md: sha256:8fbdbc06dd94b090613205fca79ef2c9f3b3805557a950ed5f5066508a763abc
+  source: local
+  local_path: ./packages/instructions/apm-update-awareness
 - repo_url: _local/decision-authority
   name: flyology-decision-authority
   version: 0.1.0
@@ -516,6 +526,15 @@ deployments:
   - ./packages/instructions/agent-instruction-maintenance
   active_owner: ./packages/instructions/agent-instruction-maintenance
   content_hash: sha256:55e76712aa0c227ed331f90acdd9cac1e6e6b8b01234860e04459ff5a950f3ed
+- kind: project-relative
+  target: claude
+  value: .claude/rules/apm-update-awareness.md
+  runtime: null
+  scope: project
+  owners:
+  - ./packages/instructions/apm-update-awareness
+  active_owner: ./packages/instructions/apm-update-awareness
+  content_hash: sha256:8fbdbc06dd94b090613205fca79ef2c9f3b3805557a950ed5f5066508a763abc
 - kind: project-relative
   target: claude
   value: .claude/rules/decision-authority.md

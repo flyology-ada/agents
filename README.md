@@ -88,6 +88,8 @@ clients' skill trees; the Codex-only compile generates the committed
 
 - `packages/instructions/` contains independently installable instruction
   modules.
+- `packages/instructions/apm-update-awareness` lets agents inspect candidate
+  context updates without advancing the consumer's committed pins.
 - `packages/skills/` contains the canonical portable skill bundles used by
   both clients.
 - `packages/profiles/ada-library` composes the common Ada library rules and
